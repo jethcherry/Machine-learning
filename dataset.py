@@ -26,32 +26,26 @@ factors = [
 
 # Generate random data for each factor
 dataset = []
-zeros_count = 15000  # Equal number of 0s and 1s
-ones_count = 15000
 for _ in range(30000):  # Number of rows in the dataset
     row = {factor: random.uniform(0, 50000) if "Shillings" in factor else random.uniform(0, 10) if "Rating" in factor else random.uniform(0, 100) for factor in factors[:-1]}
+    row['Type of Business'] = random.choice(["Manufacturing","E-commerce",
+                                             "Consulting","Education","Real Estate",
+                                             "Transportation","Food and Beverage","Entertainment","Construction"
+                                             ,"Agriculture","Energy","Media","Fashion","Fitness and Wellness","Automotive","Tourism and Travel",
+                                             "Legal_Services","Event Planning","Environmental Services","Software Development","Marketing and Advertising"
+                                             ,"Nonprofit/NGOGovernment/Public Sector","Pharmaceuticals","Telecommunications"])
     
-    # Map categorical variables to integers
-    row['Type of Business'] = random.randint(0, 20)  # Assuming 20 categories
-    row['Business Size'] = random.randint(0, 2)  # 0 for Small, 1 for Medium, 2 for Large
-    row['Geographic Location'] = random.randint(0, 2)  # 0 for Urban, 1 for Suburban, 2 for Rural
-    row['Distribution Channels'] = random.randint(0, 2)  # 0 for Online, 1 for Offline, 2 for Both
-    row['Customer Demographics'] = random.randint(0, 3)  # 0 for Youth, 1 for Adults, 2 for Seniors, 3 for Mixed
-    row['Partnerships and Alliances'] = random.randint(0, 1)  # 0 for No, 1 for Yes
+    row['Business Size'] = random.choice(["Small", "Medium", "Large"])
+    row['Geographic Location'] = random.choice(["Urban", "Suburban", "Rural"])
+    row['Distribution Channels'] = random.choice(["Online", "Offline", "Both"])
+    row['Customer Demographics'] = random.choice(["Youth", "Adults", "Seniors", "Mixed"])
+    row['Partnerships and Alliances'] = random.choice(["Yes", "No"])
     
-    # Assign the 'Target' variable with equal distribution of 0s and 1s
-    if zeros_count > 0 and ones_count > 0:
-        row['Target'] = random.choice([0, 1])
-        if row['Target'] == 0:
-            zeros_count -= 1
-        else:
-            ones_count -= 1
-    elif zeros_count > 0:
-        row['Target'] = 0
-        zeros_count -= 1
-    else:
-        row['Target'] = 1
-        ones_count -= 1
+    # Convert 'Yes'/'No' to integer (1/0)
+    row['Partnerships and Alliances'] = 1 if row['Partnerships and Alliances'] == 'Yes' else 0
+    
+    # Bias the selection towards '1' (growth) by setting a probability
+    row['Target'] = random.choices([0, 1], weights=[0.2, 0.8])[0]  # Adjust weights as needed
     
     dataset.append(row)
 
