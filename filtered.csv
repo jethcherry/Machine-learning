@@ -1,0 +1,11 @@
+,#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary
+0,1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,2,Ivysaur,Grass,Poison,405,60,62,63,80,80,60,1,False
+48,43,Oddish,Grass,Poison,320,45,50,55,75,65,30,1,False
+49,44,Gloom,Grass,Poison,395,60,65,70,85,75,40,1,False
+75,69,Bellsprout,Grass,Poison,300,50,75,35,70,30,40,1,False
+76,70,Weepinbell,Grass,Poison,390,65,90,50,85,45,55,1,False
+344,315,Roselia,Grass,Poison,400,50,60,45,100,80,65,3,False
+451,406,Budew,Grass,Poison,280,40,30,35,50,70,55,4,False
+452,407,Roserade,Grass,Poison,515,60,70,65,125,105,90,4,False
+651,590,Foongus,Grass,Poison,294,69,55,45,55,55,15,5,False
