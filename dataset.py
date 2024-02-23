@@ -20,8 +20,7 @@ factors = [
     "Partnerships and Alliances", "Quality of Leadership (Rating out of 10)",
     "Employee Morale (Rating out of 10)", "Financial Stability (Percentage)",
     "Customer Loyalty Programs (Percentage)", "Online Presence and E-commerce Strategy (Percentage)",
-    "External Economic Factors (Percentage)",
-    "Target"  # Add target as a factor
+    "External Economic Factors (Percentage)"
 ]
 
 # Generate random data for each factor
@@ -44,15 +43,12 @@ for _ in range(30000):  # Number of rows in the dataset
     # Convert 'Yes'/'No' to integer (1/0)
     row['Partnerships and Alliances'] = 1 if row['Partnerships and Alliances'] == 'Yes' else 0
     
-    # Bias the selection towards '1' (growth) by setting a probability
-    row['Target'] = random.choices([0, 1], weights=[0.2, 0.8])[0]  # Adjust weights as needed
-    
     dataset.append(row)
 
 # Write the dataset to a CSV file
 csv_file = "business_growth_dataset.csv"
 with open(csv_file, "w", newline="") as file:
-    writer = csv.DictWriter(file, fieldnames=factors)
+    writer = csv.DictWriter(file, fieldnames=factors[:-1])  # Exclude the target
     writer.writeheader()
     writer.writerows(dataset)
 
