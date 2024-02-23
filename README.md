@@ -1,8 +1,11 @@
 This Repository covers a particular range of python libraries used by the data scientists.The libraries include:
 
 1.pandas
+
 2.matplotlib
+
 3 seaborn
+
 4.numpy
 
 The investment portfolio ipynb is a model that predicts whether a business will grow after one year.Its accuracy is 80%.
